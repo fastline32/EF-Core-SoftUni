@@ -219,7 +219,8 @@ namespace CarDealer
                     customerName = x.Customer.Name,
                     Discount = x.Discount.ToString("F2"),
                     price = x.Car.PartCars.Sum(y => y.Part.Price).ToString("F2"),
-                    priceWithDiscount = (x.Car.PartCars.Sum(p => p.Part.Price) - x.Car.PartCars.Sum(p => p.Part.Price) * x.Discount / 100).ToString("F2")
+                    priceWithDiscount = (x.Car.PartCars.Sum(p => p.Part.Price) - x.Car.PartCars.Sum(p => p.Part.Price) * x.Discount / 100)
+                    .ToString("F2")
                 }).Take(10)
                 .ToList();
             return JsonConvert.SerializeObject(sales,Formatting.Indented);
